@@ -31,9 +31,15 @@ def get_last_10_closing_prices(ticker: str) -> list[float]:
     if data.empty: # Would be an error if we can't find it on yfinance.
         raise ValueError(f"Incorrect ticker: {ticker} Try a different ticker.")
 
+    # Retrieve the close price from the data, get the last 10 and round to 2 decimals.
     closes = data["Close"].squeeze().dropna().tail(10).round(2)
 
-    # if len(closes) < 10:
+    # if len(closes) < 10: # Delete - probably wont need it - should always have 10, and want to show it even if there isn't 10 days.
         # raise ValueError(f"Only {len(closes)} closing prices found for {ticker}")
 
     return closes.tolist()
+
+
+def create_chart(ticker: str, closing_prices: np.array) -> None:
+    pass
+

@@ -6,28 +6,28 @@
 
 # Mini Project 1
 
-import os
-import matplotlib as mp
-import numpy as np
-import yfinance as yf
 import helpers as hf
-from datetime import datetime
 
+def main() -> None:
 
-# Example: 
-# tickers_to_check = ["OKLO", "PLTR", "ASTS", "PL", "RGTI"]
+    # Example: 
+    # tickers_to_check = ["OKLO", "PLTR", "ASTS", "PL", "RGTI"]
 
-# TODO - Put 5 stock tickers in this list
-# tickers_to_check = []
+    # TODO - Put 5 stock tickers in this list
+    # tickers_to_check = []
 
+    # My test - DELETE 
+    tickers_to_check = ["OKLO", "PLTR", "ASTS", "PL", "RGTI"]
 
-# My test
-tickers_to_check = ["OKLO", "PLTR", "ASTS", "PL", "RGTI"]
-
-# Testing output
-for ticker in tickers_to_check:
     
-    result = hf.get_last_10_closing_prices(ticker)
+    for ticker in tickers_to_check:
+        
+        # Gets the 10 closing prices for the ticker.
+        closing_prices = hf.get_last_10_closing_prices(ticker)
+        
+        # Creates and saves a chart for that ticker, using the closing prices we received.
+        hf.create_chart(ticker, closing_prices)
+        
 
-    print(f"Ticker: {ticker}")
-    print(f"Results: {result}")
+if __name__ == "__main__":
+    main()
